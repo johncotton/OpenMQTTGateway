@@ -51,17 +51,3 @@ jobs:
         run: |
           python ./scripts/gen_wu.py --dev
           npm run docs:build
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/.vuepress/dist
-          destination_dir: dev
-          cname: docs.openmqttgateway.com
-      - name: Running Page Speed Insights
-        uses: jakepartusch/psi-action@v1.3
-        id: psi
-        with:
-          url: "https://docs.openmqttgateway.com/dev/"
-          threshold: 60
-          key: ${{ secrets.APIKEY }}
